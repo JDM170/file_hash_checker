@@ -5,7 +5,7 @@ from sys import platform
 from cx_Freeze import setup, Executable
 
 executables = [
-    Executable('program.py', targetName='prog.exe', base='Console')
+    Executable('main.py', targetName='prog.exe', base='Console')
 ]
 
 excludes = [

@@ -1,0 +1,5 @@
+__pycache__
+cx_build
+build
+dist
+upx

@@ -1,0 +1,2 @@
+progress==1.6
+pyinstaller>=4.0

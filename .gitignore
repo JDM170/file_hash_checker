@@ -1,5 +1,6 @@
-__pycache__
-cx_build
-build
-dist
-upx
+/venv
+*/__pycache__
+/cx_build
+/build
+/dist
+/upx

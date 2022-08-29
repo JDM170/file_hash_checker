@@ -35,9 +35,9 @@ def generate_md5(fn):
 
 def ask_input(message):
     result = input(message)
-    if not isfile(result):
-        ask_input(message)
-    return result
+    if isfile(result):
+        return result
+    ask_input(message)
 
 
 def main():

@@ -84,8 +84,9 @@ namespace file_hash_checker
             Console.WriteLine(message);
             Console.Write("> ");
             string data = Console.ReadLine().Trim();
-            if (string.IsNullOrWhiteSpace(data))
-                InputData(message);
+            //data = data.Replace("\\", "\\\\");
+            if (string.IsNullOrWhiteSpace(data) || !File.Exists(data))
+                return InputData(message);
             return data;
         }
 

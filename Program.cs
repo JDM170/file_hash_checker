@@ -8,6 +8,8 @@ namespace file_hash_checker
 {
     internal class Program
     {
+        private static readonly string regexHash = @"[a-zA-Z0-9]{32,}";
+
         /*static int ReadBlock(Stream s, byte[] block)
         {
             int position = 0;
@@ -84,9 +86,11 @@ namespace file_hash_checker
             Console.WriteLine(message);
             Console.Write("> ");
             string data = Console.ReadLine().Trim();
-            //data = data.Replace("\\", "\\\\");
             if (string.IsNullOrWhiteSpace(data) || !File.Exists(data))
+            {
+                Console.WriteLine("Файл не найден!");
                 return InputData(message);
+            }
             return data;
         }
 
@@ -98,13 +102,13 @@ namespace file_hash_checker
             
             string hash = CalculateMD5(source);
             bool result = false;
-            if (Regex.Match(toCompare, @"[a-zA-Z0-9]{32,}").Success)
+            if (Regex.Match(toCompare, regexHash).Success)
                 result = hash == toCompare.ToLower();
             else if (File.Exists(toCompare))
                 if (toCompare.EndsWith(".md5"))
                 {
                     var fileData = File.ReadAllText(toCompare);
-                    Match match = Regex.Match(fileData, @"[a-zA-Z0-9]{32,}");
+                    Match match = Regex.Match(fileData, regexHash);
                     if (match.Success)
                         result = hash == match.Value;
                 }

@@ -86,7 +86,7 @@ namespace file_hash_checker
             Console.WriteLine(message);
             Console.Write("> ");
             string data = Console.ReadLine().Trim();
-            if (string.IsNullOrWhiteSpace(data) || !File.Exists(data))
+            if (string.IsNullOrWhiteSpace(data))
             {
                 Console.WriteLine("Файл не найден!");
                 return InputData(message);
@@ -102,7 +102,7 @@ namespace file_hash_checker
             
             string hash = CalculateMD5(source);
             bool result = false;
-            if (Regex.Match(toCompare, regexHash).Success)
+            if (Regex.IsMatch(toCompare, regexHash))
                 result = hash == toCompare.ToLower();
             else if (File.Exists(toCompare))
                 if (toCompare.EndsWith(".md5"))

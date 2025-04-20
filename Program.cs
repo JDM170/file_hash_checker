@@ -105,9 +105,9 @@ namespace file_hash_checker
             if (Regex.IsMatch(toCompare, regexHash))
                 result = hash == toCompare.ToLower();
             else if (File.Exists(toCompare))
-                if (toCompare.EndsWith(".md5"))
+                if (toCompare.EndsWith(".txt") || toCompare.EndsWith(".md5"))
                 {
-                    var fileData = File.ReadAllText(toCompare);
+                    string fileData = File.ReadAllText(toCompare);
                     Match match = Regex.Match(fileData, regexHash);
                     if (match.Success)
                         result = hash == match.Value;
